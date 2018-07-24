@@ -3,9 +3,9 @@
     require_once ('/../IDAO.php');
     require_once '/../../util/ConnectionMysql.php';
     
-class UsuarioDAO {
+class UsuarioDAO implements IDAO{
     
-    public function consultar(Usuario $usuario){
+    public function consultar(EntidadeDominio $usuario){
     
         $usuarios = array();
         $rs = null;
@@ -44,7 +44,7 @@ class UsuarioDAO {
         
     }
     
-    public function inserir(Usuario $usuario){
+    public function inserir(EntidadeDominio $usuario){
         
         $query = "insert into usuarios(usu_data_cadastro, usu_ativo, usu_email, usu_senha, usu_apelido) values(?, ?, ?, ?, ?)";
        
@@ -62,7 +62,7 @@ class UsuarioDAO {
         
     }
     
-    public function alterar(Usuario $usuario){
+    public function alterar(EntidadeDominio $usuario){
      
         $query = "update usuarios set usu_data_cadastro = ?, usu_ativo = ?, usu_email = ?, usu_senha = ?, usu_apelido = ? where usu_id = ?";        
     
@@ -82,7 +82,7 @@ class UsuarioDAO {
         
     }
     
-    public function excluir(Usuario $usuario){
+    public function excluir(EntidadeDominio $usuario){
      
         $query = "update usuarios set usu_ativo = false where usu_id = ?";
         
